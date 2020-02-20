@@ -1,5 +1,48 @@
 import styled from "styled-components";
 
+export const Modal = styled.div`
+  position: fixed;
+  top: 0;
+  left: 0;
+  bottom: 0;
+  right: 0;
+  background-color: rgba(0, 0, 0, 0.5);
+
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  z-index: 10;
+  overflow: hidden;
+  .Modal__container {
+    position: relative;
+    top: 10rem;
+    background-color: #ffffff;
+    padding: 1rem;
+    width: 400px;
+  }
+
+  .Modal__close-button {
+    position: absolute;
+    top: 0;
+    right: 10px;
+    border: 0;
+    background-color: white;
+    padding: 0;
+    background-image: none;
+    box-shadow: none;
+    color: black;
+    width: 20px;
+  }
+  h2 {
+    font-size: 24px;
+    font-weight: 600;
+    font-stretch: normal;
+    font-style: normal;
+    line-height: normal;
+    color: black;
+    text-transform: capitalize;
+  }
+`;
 export const AddContainer = styled.div`
   width: 70%;
   display: flex;
@@ -196,6 +239,21 @@ export const ListContainer = styled.div`
       align-items: center;
       cursor: pointer;
     }
+    .edit {
+      position: relative;
+      top: 0;
+      background: transparent;
+      padding: 0;
+      box-shadow: none;
+      text-align: right;
+      padding-right: 15px;
+      display: none;
+      width: 20px;
+      margin-right: 10px;
+      &:hover:before {
+        display: none;
+      }
+    }
     .icon {
       position: relative;
       top: 0;
@@ -231,7 +289,7 @@ export const ListContainer = styled.div`
     position: relative;
     border-bottom: 1px solid #cbcbcb;
     box-shadow: 0 1px 0 0 rgba(255, 255, 255, 0.5);
-    &:hove {
+    &:hover {
       cursor: pointer;
     }
     &:hover:before {
