@@ -5,19 +5,10 @@ import axios from "axios";
 
 function ListTask(props) {
   // Declare a new state variable, which we'll call "count"
-  const [done, setDone] = useState(false);
-  const [checkeado, setChecked] = useState(!done);
   const [detail, setDetail] = useState([]);
-  // console.log(done);
-  const handleCheck = e => {
-    const done = e.target.checked;
-    setDone(done);
-    console.log(done);
-  };
-  const handleUpdate = itemId => {
-    setChecked(!done);
-    const checkeded = { checked: checkeado };
-    console.log(checkeded);
+
+  const handleUpdate = (e, itemId) => {
+    const checkeded = { checked: e.target.checked };
 
     axios
       .put(
@@ -25,12 +16,10 @@ function ListTask(props) {
         checkeded
       )
       .then(response => {
-        console.log(response);
         props.fetchData();
       });
   };
   const handleDelete = itemId => {
-    console.log(itemId);
     axios
       .delete(
         `https://monoku-tasks.herokuapp.com/YZgQZzKRQUkEYW5R8How/${itemId}/delete`
@@ -44,11 +33,9 @@ function ListTask(props) {
     for (let i = 0; i < Lista.length; i++) {
       if (Lista[i].id === id) {
         const nuevo = Lista[i].text;
-        console.log(nuevo);
         setDetail({
           name: nuevo
         });
-        console.log(detail);
         break;
       }
     }
@@ -70,8 +57,8 @@ function ListTask(props) {
                     type="checkbox"
                     name={list.id}
                     defaultChecked={list.checked}
-                    onChange={handleCheck}
-                    onClick={() => handleUpdate(list.id)}
+                    // onChange={handleCheck}
+                    onClick={e => handleUpdate(e, list.id)}
                   />
                   <span className="checkmark"></span>
                 </label>
