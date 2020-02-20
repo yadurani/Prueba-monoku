@@ -65,7 +65,7 @@ function ListTask(props) {
                 <label htmlFor={list.id}>{list.text}</label>
               </div>
               <button className="icon" onClick={() => handleDelete(list.id)}>
-                <img src={Trash} />
+                <img alt="trash" src={Trash} />
               </button>
             </li>
           ))}
